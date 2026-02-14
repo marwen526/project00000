@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axioos from 'axios';
+import React, { useState, useEffect } from 'react'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -7,8 +6,9 @@ function App() {
 
 
   useEffect(() => {
-    axioos.get('http://localhost:5000/api/user')
-      .then(res => setUser(res.data))
+    fetch('http://localhost:5000/api/user')
+      .then(res => res.json())
+      .then(data => setUser(data))
       .catch(err => console.error(err));
   }, []);
 
